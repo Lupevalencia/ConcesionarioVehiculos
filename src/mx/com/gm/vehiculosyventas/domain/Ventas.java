@@ -3,8 +3,8 @@ package mx.com.gm.vehiculosyventas.domain;
 
 
 public class Ventas {
-    int montoVentas;
-    int codigoVehiculoVendido;
+    float montoVentas;
+    String codigoVehiculoVendido; //Este código es el mismo código que tiene vehículo
     String nombre;
     String apellido;
     String dni;
@@ -13,7 +13,11 @@ public class Ventas {
    
    }
    
-   public Ventas(int montoVentas, int codigoVehiculoVendido, String nombre, String apellido, String dni){
+   public Ventas(String codigoVehiculoVendido){
+       this.codigoVehiculoVendido = codigoVehiculoVendido;
+   }
+   
+   public Ventas(float montoVentas, String codigoVehiculoVendido, String nombre, String apellido, String dni){
        this.montoVentas = montoVentas;
        this.codigoVehiculoVendido = codigoVehiculoVendido;
        this.nombre = nombre;
@@ -21,25 +25,21 @@ public class Ventas {
        this.dni = dni;
    }
 
-    public Ventas(String linea) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   
    //métodos
 
-    public int getMontoVentas() {
-        return this.montoVentas;
+    public float getMontoVentas() {
+        return (float) this.montoVentas;
     }
 
-    public void setMontoVentas(int montoVentas) {
+    public void setMontoVentas(float montoVentas) {
         this.montoVentas = montoVentas;
     }
 
-    public int getCodigoVehiculoVendido() {
+    public String getCodigoVehiculoVendido() {
         return this.codigoVehiculoVendido;
     }
 
-    public void setCodigoVehiculoVendido(int codigoVehiculoVendido) {
+    public void setCodigoVehiculoVendido(String codigoVehiculoVendido) {
         this.codigoVehiculoVendido = codigoVehiculoVendido;
     }
 

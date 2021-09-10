@@ -4,8 +4,16 @@ package mx.com.gm.vehiculosyventas.domain;
 
 public class Camionetas extends Vehiculo{
     private int numeroAsientos;
+    
+    public Camionetas(){
+    }
 
-    public Camionetas(int numeroAsientos, int codigo, String marca, String tipo, int modelo, String patente, int kilometraje) {
+    
+    public Camionetas(String codigo){
+        this.codigo = codigo;
+    }
+    
+    public Camionetas(int numeroAsientos, String codigo, String marca, String tipo, float modelo, String patente, float kilometraje) {
         super(codigo, marca, tipo, modelo, patente, kilometraje);
         this.numeroAsientos = numeroAsientos;
     }

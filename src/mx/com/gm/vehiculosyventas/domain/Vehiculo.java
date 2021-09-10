@@ -3,19 +3,19 @@ package mx.com.gm.vehiculosyventas.domain;
 
 
 public class Vehiculo {  //Así podrán acceder a las clases hijas
-    protected int codigo;
+    protected String codigo;
     protected String marca;
     protected String tipo; //Auto, Camioneta o Motocicleta
-    protected int modelo; //Hace referencia al año del coche
+    protected float modelo; //Hace referencia al año del coche
     protected String patente; //Hace referencia a la matricula
-    protected int kilometraje;
+    protected float kilometraje;
     
     //Constructor vacio
       public Vehiculo(){
           
       }
       //Inicializamos
-      public Vehiculo(int codigo, String marca, String tipo, int modelo, String patente, int kilometraje){
+      public Vehiculo(String codigo, String marca, String tipo, float modelo, String patente, float kilometraje){
           this.codigo = codigo;
           this.marca = marca;
           this.tipo = tipo;
@@ -23,18 +23,13 @@ public class Vehiculo {  //Así podrán acceder a las clases hijas
           this.patente = patente;
           this.kilometraje = kilometraje;
       }
-
-    public Vehiculo(String linea) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-      
       //métodos
 
-    public int getCodigo() {
+    public String getCodigo() {
         return this.codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -54,11 +49,11 @@ public class Vehiculo {  //Así podrán acceder a las clases hijas
         this.tipo = tipo;
     }
 
-    public int getModelo() {
+    public float getModelo() {
         return this.modelo;
     }
 
-    public void setModelo(int modelo) {
+    public void setModelo(float modelo) {
         this.modelo = modelo;
     }
 
@@ -70,11 +65,11 @@ public class Vehiculo {  //Así podrán acceder a las clases hijas
         this.patente = patente;
     }
 
-    public int getKilometraje() {
+    public float getKilometraje() {
         return this.kilometraje;
     }
 
-    public void setKilometraje(int kilometraje) {
+    public void setKilometraje(float kilometraje) {
         this.kilometraje = kilometraje;
     }
     
