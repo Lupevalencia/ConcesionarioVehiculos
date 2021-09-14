@@ -25,6 +25,10 @@ public class Vehiculo {  //Así podrán acceder a las clases hijas
       }
       //métodos
 
+    public Vehiculo(String codigo) {
+        this.codigo = codigo;
+    }
+
     public String getCodigo() {
         return this.codigo;
     }

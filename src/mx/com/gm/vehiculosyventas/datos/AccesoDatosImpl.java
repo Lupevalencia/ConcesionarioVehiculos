@@ -152,25 +152,45 @@ public class AccesoDatosImpl implements IAccesoDatos {
         }
     }
 
-   // @Override
-    //public void borrarVehiculo(String nombreVehiculo) throws LecturaDatosEx {
-      //  var archivoVehiculo = new File(nombreVehiculo);
-        //try {
-          //  var entrada = new BufferedReader(new FileReader(archivoVehiculo));
-            //String linea = null;
-            //linea = entrada.readLine();
-            //var archivoVehiculoNuevo = new File(nombreVehiculo);
-            //var salida = new PrintWriter(new FileWriter(archivoVehiculoNuevo));
-            //while(linea != null){
-              //  if(nombreVehiculo != null && nombreVehiculo != linea){
-                   
-                //}
-           // }
-       // } catch (FileNotFoundException ex) {
-         //   ex.printStackTrace();
-          //  throw new LecturaDatosEx("Excepción al borrar Vehiculo " + ex.getMessage());
-       // } catch (IOException ex) {
-         //    ex.printStackTrace();
-          //  throw new LecturaDatosEx("Excepción al borrar Vehiculo " + ex.getMessage());
-        //} 
+    public void eliminarVehiculo(String codigoABorrar, String nombreFicheroVehiculo, String nombreFicheroVehiculoNuevo) throws LecturaDatosEx {
+        var archivoVehiculo = new File(nombreFicheroVehiculo);
+        try {
+            var entrada = new BufferedReader(new FileReader(archivoVehiculo));
+            String linea = null;
+            linea = entrada.readLine();
+            
+            var archivoVehiculoNuevo = new File(nombreFicheroVehiculoNuevo);
+            var salida = new PrintWriter(new FileWriter(archivoVehiculoNuevo));
+            //String[] lineaArray = linea.split(";");
+            //Vehiculo vehiculoABorrar = new Vehiculo(lineaArray[0],lineaArray[1],lineaArray[2],Float.parseFloat(lineaArray[3]),lineaArray[4],Float.parseFloat(lineaArray[5]));
+
+            while(linea != null){
+                String[] lineaArray = linea.split(";");
+                if(!codigoABorrar.equals(lineaArray[0])){
+                   System.out.println(" he pasado por aquí");
+                   salida.println(linea); //toString para el objeto entero
+                          
+                }
+                linea = entrada.readLine();
+            }
+            salida.close();
+            System.out.println("Se ha creado el nuevo archivo correctamente");
+            
+            //Ahora necesitamos renombrar el archivo nuevo y borrar el anterior
+            
+            archivoVehiculo.delete();
+            System.out.println("El antiguo archivo se ha eliminado correctamente");
+            
+            //archivoVehiculoNuevo. HACERLO CON RENAME
+            //System.out.println("Archivo renombrado");
+                    
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            throw new LecturaDatosEx("Excepción al borrar Vehiculo " + ex.getMessage());
+        } catch (IOException ex) {
+             ex.printStackTrace();
+            throw new LecturaDatosEx("Excepción al borrar Vehiculo " + ex.getMessage());
+        }
+    }
+
 }

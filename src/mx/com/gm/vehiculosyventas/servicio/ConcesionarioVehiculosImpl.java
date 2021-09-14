@@ -79,11 +79,16 @@ public class ConcesionarioVehiculosImpl implements IConcesionarioVehiculos {
         
     }
 
-   // @Override
-    //public void borrarVehiculo(String borrar) {
-        
-    //}
-
+    @Override
+    public void eliminarVehiculo(String codigoABorrar) {
+            try {
+            datos.eliminarVehiculo(codigoABorrar, NOMBRE_FICHERO_VEHICULO, NOMBRE_FICHERO_AUXILIAR);
+            System.out.println("El vehículo se ha eliminado con exito");
+        } catch (LecturaDatosEx ex) {
+            System.out.println("Error de Lectura de datos");
+            ex.printStackTrace();
+        }
     }
 
+    }
   

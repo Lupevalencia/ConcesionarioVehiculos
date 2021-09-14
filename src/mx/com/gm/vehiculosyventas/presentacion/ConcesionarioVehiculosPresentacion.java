@@ -117,7 +117,27 @@ public class ConcesionarioVehiculosPresentacion {
                     break;
                 case 5:
                     System.out.println("Introduce el codigo del vehiculo que desea borrar: ");
-                    //concesionario.borrarVehiculo(borrar);
+                    String codigoABorrar = scanner.nextLine();
+                    
+                    //System.out.println("Introduce la marca del vehiculo que desea borrar: ");
+                    //String marca = scanner.nextLine();
+                    
+                    //System.out.println("Introduce el tipo de vehiculo que desea borrar: ");
+                    //String tipo = scanner.nextLine();
+                    
+                    //System.out.println("Introduce el modelo del vehiculo: ");
+                    //String modeloString = scanner.nextLine();
+                    //float modelo = Float.parseFloat(modeloString);
+                    
+                    //System.out.println("Introduce la patente del vehiculo: ");
+                    //String patente = scanner.nextLine();
+                    
+                    //System.out.println("Introduce los kms del vehiculo: ");
+                    //String kmString = scanner.nextLine();
+                    //float km = Float.parseFloat(kmString);
+                   
+                    //Vehiculo vehiculoABorrar = new Vehiculo(codigo, marca, tipo , modelo, patente, km);
+                    concesionario.eliminarVehiculo(codigoABorrar);
                     break;
                 case 0:
                     System.out.println("Hasta pronto!!");

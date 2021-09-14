@@ -18,5 +18,5 @@ public interface IConcesionarioVehiculos {
     //int montoVentas, int codigoVehiculoVendido, String nombre, String apellido, String dni
     void listarVehiculos();
     void listarVentas();
-    //void borrarVehiculo(String borrar); //leer y crear otro fichero
+    void eliminarVehiculo(String codigoABorrar); //leer y crear otro fichero
 }

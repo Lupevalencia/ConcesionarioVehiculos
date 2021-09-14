@@ -25,6 +25,6 @@ public interface IAccesoDatos {
     void crearVehiculo(String nombreFicheroVehiculo) throws AccesoDatosEx;
     void crearVenta(String nombreFicheroVenta) throws AccesoDatosEx;
     
-    //void borrarVehiculo(String nombreFicheroVehiculo, String borrar)throws LecturaDatosEx;
+    void eliminarVehiculo(String vehiculoABorrar, String nombreFicheroVehiculo, String nombreFicheroVehiculoNuevo)throws LecturaDatosEx;
     
 }
