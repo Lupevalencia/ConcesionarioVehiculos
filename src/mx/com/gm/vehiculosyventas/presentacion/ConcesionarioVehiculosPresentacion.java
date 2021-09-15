@@ -86,27 +86,31 @@ public class ConcesionarioVehiculosPresentacion {
                     break;
                 case 2:
 
-                    System.out.println("Introduce la monto de la venta");
-                    String montoString = scanner.nextLine();
-                    float montoVenta = Float.parseFloat(montoString);
+                    System.out.println("Introduce el codigo del vehiculo para la venta que desea añadir: ");
+                    String codigoAComprobar = scanner.nextLine();
+                    String resultado = null;
+                    concesionario.comprobarCodigoVehiculo(codigoAComprobar);
                     
-                    System.out.println("Introduce el codigo de la venta que desea añadir: ");
-                    String codigoVenta = scanner.nextLine();
+                    while(!resultado.equalsIgnoreCase(null)){
+                        System.out.println("Introduce la monto de la venta");
+                        String montoString = scanner.nextLine();
+                        float montoVenta = Float.parseFloat(montoString);
+
+                        System.out.println("Introduce el nombre de la venta que desea añadir: ");
+                        String nombreVenta = scanner.nextLine();
                     
-                    System.out.println("Introduce el nombre de la venta que desea añadir: ");
-                    String nombreVenta = scanner.nextLine();
+                        System.out.println("Introduce el apellido de la venta que desea añadir: ");
+                        String apellidoVenta = scanner.nextLine();
                     
-                    System.out.println("Introduce el apellido de la venta que desea añadir: ");
-                    String apellidoVenta = scanner.nextLine();
+                        System.out.println("Introduce el dni de la venta que desea añadir: ");
+                        String dniVenta = scanner.nextLine();
                     
-                    System.out.println("Introduce el dni de la venta que desea añadir: ");
-                    String dniVenta = scanner.nextLine();
+                         Ventas ventaAInsertar = new Ventas(codigoAComprobar, montoVenta, nombreVenta, apellidoVenta, dniVenta);
                     
-                    Ventas ventaAInsertar = new Ventas(montoVenta, codigoVenta, nombreVenta, apellidoVenta, dniVenta);
-                    
-                    concesionario.agregarVenta(ventaAInsertar);
-                   
-                    break;
+                        concesionario.agregarVenta(ventaAInsertar);
+                        break;
+                    }
+
                 case 3:
                     System.out.println("La lista de Vehiculos añadidos es la siguiente: ");
                     concesionario.listarVehiculos();
@@ -118,25 +122,6 @@ public class ConcesionarioVehiculosPresentacion {
                 case 5:
                     System.out.println("Introduce el codigo del vehiculo que desea borrar: ");
                     String codigoABorrar = scanner.nextLine();
-                    
-                    //System.out.println("Introduce la marca del vehiculo que desea borrar: ");
-                    //String marca = scanner.nextLine();
-                    
-                    //System.out.println("Introduce el tipo de vehiculo que desea borrar: ");
-                    //String tipo = scanner.nextLine();
-                    
-                    //System.out.println("Introduce el modelo del vehiculo: ");
-                    //String modeloString = scanner.nextLine();
-                    //float modelo = Float.parseFloat(modeloString);
-                    
-                    //System.out.println("Introduce la patente del vehiculo: ");
-                    //String patente = scanner.nextLine();
-                    
-                    //System.out.println("Introduce los kms del vehiculo: ");
-                    //String kmString = scanner.nextLine();
-                    //float km = Float.parseFloat(kmString);
-                   
-                    //Vehiculo vehiculoABorrar = new Vehiculo(codigo, marca, tipo , modelo, patente, km);
                     concesionario.eliminarVehiculo(codigoABorrar);
                     break;
                 case 0:

@@ -68,7 +68,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
                  String[] lineaArray = linea.split(";");
                  //System.out.println(lineaArray.length);
             
-                 Ventas venta = new Ventas(Float.parseFloat(lineaArray[0]),lineaArray[1],lineaArray[2],lineaArray[3],lineaArray[4]);
+                 Ventas venta = new Ventas(lineaArray[0],Float.parseFloat(lineaArray[1]),lineaArray[2],lineaArray[3],lineaArray[4]);
                  
              ventas.add(venta);
              linea = entrada.readLine();
@@ -112,7 +112,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
             var salida = new PrintWriter(new FileWriter(archivoVenta,anexar));
             
             //HACER LO MISMO CON VENTA
-            salida.println(venta.getMontoVentas() + ";" + " " + venta.getCodigoVehiculoVendido()
+            salida.println(venta.getCodigoVehiculoVendido() + ";" + " " + venta.getMontoVentas()
                     
             + ";" + " " + venta.getNombre() + ";" + " " + venta.getApellido() + ";" + " " + venta.getDni());
             
@@ -167,8 +167,8 @@ public class AccesoDatosImpl implements IAccesoDatos {
             while(linea != null){
                 String[] lineaArray = linea.split(";");
                 if(!codigoABorrar.equals(lineaArray[0])){
-                   System.out.println(" he pasado por aquí");
-                   salida.println(linea); //toString para el objeto entero
+                   System.out.println("He pasado por aquí");
+                   salida.println(linea); //toString para el objeto entero, aquí no es necesario pues va incluido
                           
                 }
                 linea = entrada.readLine();
@@ -181,8 +181,8 @@ public class AccesoDatosImpl implements IAccesoDatos {
             archivoVehiculo.delete();
             System.out.println("El antiguo archivo se ha eliminado correctamente");
             
-            //archivoVehiculoNuevo. HACERLO CON RENAME
-            //System.out.println("Archivo renombrado");
+            archivoVehiculoNuevo.renameTo(archivoVehiculo);
+            System.out.println("Archivo nuevo renombrado a su nombre inicial");
                     
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
@@ -191,6 +191,36 @@ public class AccesoDatosImpl implements IAccesoDatos {
              ex.printStackTrace();
             throw new LecturaDatosEx("Excepción al borrar Vehiculo " + ex.getMessage());
         }
+    }
+
+    @Override
+    public String comprobarCodigoVehiculo(String codigo, String nombreFicheroVehiculo) throws LecturaDatosEx  {
+        var archivoVehiculo = new File(nombreFicheroVehiculo);
+        String resultado  = null;
+        try {
+            var entrada = new BufferedReader(new FileReader(archivoVehiculo));
+            String linea = null;
+            linea = entrada.readLine();
+            var indice = 1;
+            while (linea != null){
+                String[] lineaArray = linea.split(";");
+                if (codigo != null && codigo.equalsIgnoreCase(lineaArray[0])) { 
+                    resultado = "Codigo" + " " + linea + " " + "encontrado en el índice\n " + " " + indice;
+                    break;
+                }
+                linea = entrada.readLine();
+                indice++;
+            
+            }
+        } catch (FileNotFoundException ex) {
+           ex.printStackTrace();
+           throw new LecturaDatosEx("Excepcion al comprobar el código " + ex.getMessage());
+        } catch (IOException ex) {
+           ex.printStackTrace(); //arrojamos la posible excepción
+           throw new LecturaDatosEx("Excepcion al comprobar el código " + ex.getMessage());
+        }
+        return resultado;
+        
     }
 
 }

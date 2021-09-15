@@ -27,4 +27,6 @@ public interface IAccesoDatos {
     
     void eliminarVehiculo(String codigoABorrar, String nombreFicheroVehiculo, String nombreFicheroVehiculoNuevo)throws LecturaDatosEx;
     
+    String comprobarCodigoVehiculo(String codigo, String nombreFicheroVehiculo)throws LecturaDatosEx;
+    
 }

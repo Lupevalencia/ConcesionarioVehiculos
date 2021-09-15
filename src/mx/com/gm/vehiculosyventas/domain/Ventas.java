@@ -3,8 +3,9 @@ package mx.com.gm.vehiculosyventas.domain;
 
 
 public class Ventas {
-    float montoVentas;
+    
     String codigoVehiculoVendido; //Este código es el mismo código que tiene vehículo
+    float montoVentas;
     String nombre;
     String apellido;
     String dni;
@@ -17,9 +18,9 @@ public class Ventas {
        this.codigoVehiculoVendido = codigoVehiculoVendido;
    }
    
-   public Ventas(float montoVentas, String codigoVehiculoVendido, String nombre, String apellido, String dni){
-       this.montoVentas = montoVentas;
+   public Ventas(String codigoVehiculoVendido, float montoVentas, String nombre, String apellido, String dni){
        this.codigoVehiculoVendido = codigoVehiculoVendido;
+       this.montoVentas = montoVentas;
        this.nombre = nombre;
        this.apellido = apellido;
        this.dni = dni;
@@ -27,20 +28,20 @@ public class Ventas {
 
    //métodos
 
-    public float getMontoVentas() {
-        return (float) this.montoVentas;
-    }
-
-    public void setMontoVentas(float montoVentas) {
-        this.montoVentas = montoVentas;
-    }
-
     public String getCodigoVehiculoVendido() {
         return this.codigoVehiculoVendido;
     }
 
     public void setCodigoVehiculoVendido(String codigoVehiculoVendido) {
         this.codigoVehiculoVendido = codigoVehiculoVendido;
+    }
+
+    public float getMontoVentas() {
+        return this.montoVentas;
+    }
+
+    public void setMontoVentas(float montoVentas) {
+        this.montoVentas = montoVentas;
     }
 
     public String getNombre() {
@@ -66,14 +67,13 @@ public class Ventas {
     public void setDni(String dni) {
         this.dni = dni;
     }
-   
-    //toString
 
+    //toString
     @Override
     public String toString() {
-        return "Ventas{" + "montoVentas=" + montoVentas + ", codigoVehiculoVendido=" + codigoVehiculoVendido + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + '}';
+        return "Ventas{" + "codigoVehiculoVendido=" + codigoVehiculoVendido + ", montoVentas=" + montoVentas + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + '}';
     }
-    
+
     
     
 }

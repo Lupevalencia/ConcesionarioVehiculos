@@ -12,11 +12,13 @@ public interface IConcesionarioVehiculos {
             
    
     
-     void agregarVehiculo(Vehiculo vehiculo);
-    //dentro de cada tipo según el tipo, habrá que añadir dierentes atributos. con un objeto pasarselo.
+    void agregarVehiculo(Vehiculo vehiculo);
     void agregarVenta(Ventas venta);
-    //int montoVentas, int codigoVehiculoVendido, String nombre, String apellido, String dni
+   
     void listarVehiculos();
     void listarVentas();
+    
     void eliminarVehiculo(String codigoABorrar); //leer y crear otro fichero
+    
+    void comprobarCodigoVehiculo(String codigoAComprobar);
 }

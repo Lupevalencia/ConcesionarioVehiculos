@@ -90,5 +90,19 @@ public class ConcesionarioVehiculosImpl implements IConcesionarioVehiculos {
         }
     }
 
+    @Override
+    public void comprobarCodigoVehiculo(String codigoAComprobar) {
+        String resultado = null;
+        try {
+            resultado = this.datos.comprobarCodigoVehiculo(codigoAComprobar, NOMBRE_FICHERO_VEHICULO);
+           // System.out.println("El codigo ha sido comprobado correctamente");
+        } catch (LecturaDatosEx ex) {
+            System.out.println("Error de lectura de datos");
+            ex.printStackTrace();
+        }
+        System.out.println("resultado = " + resultado);
+        
     }
+
+ }
   
