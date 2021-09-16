@@ -167,7 +167,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
             while(linea != null){
                 String[] lineaArray = linea.split(";");
                 if(!codigoABorrar.equals(lineaArray[0])){
-                   System.out.println("He pasado por aquí");
+                   //System.out.println("He pasado por aquí");
                    salida.println(linea); //toString para el objeto entero, aquí no es necesario pues va incluido
                           
                 }

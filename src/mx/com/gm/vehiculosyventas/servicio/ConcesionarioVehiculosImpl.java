@@ -91,7 +91,7 @@ public class ConcesionarioVehiculosImpl implements IConcesionarioVehiculos {
     }
 
     @Override
-    public void comprobarCodigoVehiculo(String codigoAComprobar) {
+    public String comprobarCodigoVehiculo(String codigoAComprobar) {
         String resultado = null;
         try {
             resultado = this.datos.comprobarCodigoVehiculo(codigoAComprobar, NOMBRE_FICHERO_VEHICULO);
@@ -100,8 +100,8 @@ public class ConcesionarioVehiculosImpl implements IConcesionarioVehiculos {
             System.out.println("Error de lectura de datos");
             ex.printStackTrace();
         }
-        System.out.println("resultado = " + resultado);
-        
+       // System.out.println("resultado = " + resultado);
+        return resultado;
     }
 
  }

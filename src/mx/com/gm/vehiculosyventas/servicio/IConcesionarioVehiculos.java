@@ -20,5 +20,5 @@ public interface IConcesionarioVehiculos {
     
     void eliminarVehiculo(String codigoABorrar); //leer y crear otro fichero
     
-    void comprobarCodigoVehiculo(String codigoAComprobar);
+    String comprobarCodigoVehiculo(String codigoAComprobar);
 }

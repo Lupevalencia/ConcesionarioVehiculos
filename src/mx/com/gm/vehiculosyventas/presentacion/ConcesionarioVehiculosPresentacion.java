@@ -89,9 +89,10 @@ public class ConcesionarioVehiculosPresentacion {
                     System.out.println("Introduce el codigo del vehiculo para la venta que desea añadir: ");
                     String codigoAComprobar = scanner.nextLine();
                     String resultado = null;
-                    concesionario.comprobarCodigoVehiculo(codigoAComprobar);
+                    resultado = concesionario.comprobarCodigoVehiculo(codigoAComprobar);
                     
-                    while(!resultado.equalsIgnoreCase(null)){
+                    
+                    if(resultado != null){
                         System.out.println("Introduce la monto de la venta");
                         String montoString = scanner.nextLine();
                         float montoVenta = Float.parseFloat(montoString);
@@ -108,9 +109,11 @@ public class ConcesionarioVehiculosPresentacion {
                          Ventas ventaAInsertar = new Ventas(codigoAComprobar, montoVenta, nombreVenta, apellidoVenta, dniVenta);
                     
                         concesionario.agregarVenta(ventaAInsertar);
-                        break;
+                    }else{
+                        System.out.println("ERROR: el codigo no existe. Vuelve a insertar un nuevo codigo para añadir su venta ");
                     }
-
+                    
+                    break;
                 case 3:
                     System.out.println("La lista de Vehiculos añadidos es la siguiente: ");
                     concesionario.listarVehiculos();
@@ -122,7 +125,15 @@ public class ConcesionarioVehiculosPresentacion {
                 case 5:
                     System.out.println("Introduce el codigo del vehiculo que desea borrar: ");
                     String codigoABorrar = scanner.nextLine();
-                    concesionario.eliminarVehiculo(codigoABorrar);
+                    
+                    String resultadoBorrar = null;
+                    resultadoBorrar = concesionario.comprobarCodigoVehiculo(codigoABorrar);
+                    
+                    if(resultadoBorrar != null){
+                        concesionario.eliminarVehiculo(codigoABorrar);
+                    }else{
+                        System.out.println("ERROR: el codigo no existe. Vuelve a insertar un nuevo codigo para eliminar el vehiculo que desea ");   
+                    }
                     break;
                 case 0:
                     System.out.println("Hasta pronto!!");
