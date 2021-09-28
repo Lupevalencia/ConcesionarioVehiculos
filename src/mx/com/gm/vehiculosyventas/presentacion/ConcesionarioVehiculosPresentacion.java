@@ -49,24 +49,38 @@ public class ConcesionarioVehiculosPresentacion {
             
             switch (opcion) {
                 case 1:
+                    //Para el nombre no hace falta validar porque podemos poner números,letras..
                     System.out.println("Introduce el codigo del vehiculo que desea añadir: ");
                     String codigoVehiculo = scanner.nextLine();
                     
-                    System.out.println("Introduce la marca del vehiculo: ");
-                    String marcaVehiculo = scanner.nextLine();
+                    String marcaVehiculo = "1234";
+                    while(!marcaVehiculo.matches("^[A-Za-z ]*$")){
+                        System.out.println("Introduce la marca del vehiculo: ");
+                        marcaVehiculo = scanner.nextLine();
+                     }
                     
-                    System.out.println("Introduce el tipo de vehiculo: ");
-                    String tipoVehiculo = scanner.nextLine();
+                     String tipoVehiculo = " ";
+                     while(!tipoVehiculo.equalsIgnoreCase("Autos") && !tipoVehiculo.equalsIgnoreCase("Camionetas") && !tipoVehiculo.equalsIgnoreCase("Motocicletas") ){
+                        System.out.println("Introduce el tipo de vehiculo: (Autos/Camionetas/Motocicletas) ");
+                        tipoVehiculo = scanner.nextLine();
+                     }
                     
-                    System.out.println("Introduce el modelo del vehiculo: ");
-                    String modeloVehiculoString = scanner.nextLine();
+                    String modeloVehiculoString = " ";
+                    while(concesionario.comprobarNumeroTeclado(modeloVehiculoString)){
+                        System.out.println("Introduce el modelo del vehiculo: ");
+                        modeloVehiculoString = scanner.nextLine();
+                    }
                     float modeloVehiculo = Float.parseFloat(modeloVehiculoString);
                     
+                    //Puede introducir para este campo números y letras...
                     System.out.println("Introduce la patente del vehiculo: ");
                     String patenteVehiculo = scanner.nextLine();
                     
-                    System.out.println("Introduce los kms del vehiculo: ");
-                    String kmsString = scanner.nextLine();
+                    String kmsString = " ";
+                    while(concesionario.comprobarNumeroTeclado(kmsString)){
+                        System.out.println("Introduce los kms del vehiculo: ");
+                        kmsString = scanner.nextLine();
+                    }
                     float kms = Float.parseFloat(kmsString);
                     
 
@@ -85,28 +99,38 @@ public class ConcesionarioVehiculosPresentacion {
                     //concesionario.agregarVehiculo(codigo, marca, tipo, opcion, patente, opcion);
                     break;
                 case 2:
-
+                    //Ya tenemos un método que nos comprueba la cadena que introducimos por teclado
                     System.out.println("Introduce el codigo del vehiculo para la venta que desea añadir: ");
                     String codigoAComprobar = scanner.nextLine();
                     String resultado = null;
                     resultado = concesionario.comprobarCodigoVehiculo(codigoAComprobar);
-                    
-                    
+                     
+                    //Creo que aquí podíamos haber hecho un witch
                     if(resultado != null){
-                        System.out.println("Introduce la monto de la venta");
-                        String montoString = scanner.nextLine();
+                        String montoString = " ";
+                        while(concesionario.comprobarNumeroTeclado(montoString)){
+                            System.out.println("Introduce la monto de la venta");
+                            montoString = scanner.nextLine();
+                        }
                         float montoVenta = Float.parseFloat(montoString);
 
-                        System.out.println("Introduce el nombre de la venta que desea añadir: ");
-                        String nombreVenta = scanner.nextLine();
-                    
-                        System.out.println("Introduce el apellido de la venta que desea añadir: ");
-                        String apellidoVenta = scanner.nextLine();
-                    
+                        String nombreVenta = "1234";
+                        while(!nombreVenta.matches("^[A-Za-z ]*$")){
+                            System.out.println("Introduce el nombre de la venta que desea añadir: ");
+                            nombreVenta = scanner.nextLine();
+                        }
+                        
+                        String apellidoVenta = "1234";
+                        while(!apellidoVenta.matches("^[A-Za-z ]*$")){
+                            System.out.println("Introduce el apellido de la venta que desea añadir: ");
+                            apellidoVenta = scanner.nextLine();
+                        }
+                        
+                        //El dni tiene tanto números y letras..
                         System.out.println("Introduce el dni de la venta que desea añadir: ");
                         String dniVenta = scanner.nextLine();
                     
-                         Ventas ventaAInsertar = new Ventas(codigoAComprobar, montoVenta, nombreVenta, apellidoVenta, dniVenta);
+                        Ventas ventaAInsertar = new Ventas(codigoAComprobar, montoVenta, nombreVenta, apellidoVenta, dniVenta);
                     
                         concesionario.agregarVenta(ventaAInsertar);
                     }else{

@@ -1,8 +1,6 @@
 
 package mx.com.gm.vehiculosyventas.servicio;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import mx.com.gm.vehiculosyventas.datos.*;
 import mx.com.gm.vehiculosyventas.domain.*;
 import mx.com.gm.vehiculosyventas.excepciones.*;
@@ -102,6 +100,16 @@ public class ConcesionarioVehiculosImpl implements IConcesionarioVehiculos {
         }
        // System.out.println("resultado = " + resultado);
         return resultado;
+    }
+
+    @Override
+    public boolean comprobarNumeroTeclado(String modeloKilometrajeVehiculo) {
+        try{
+            Double.parseDouble(modeloKilometrajeVehiculo);
+            return false;
+        }catch(NumberFormatException e){
+            return true;
+        }        
     }
 
  }

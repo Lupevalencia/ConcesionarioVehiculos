@@ -21,4 +21,5 @@ public interface IConcesionarioVehiculos {
     void eliminarVehiculo(String codigoABorrar); //leer y crear otro fichero
     
     String comprobarCodigoVehiculo(String codigoAComprobar);
+    boolean comprobarNumeroTeclado(String modeloKilometrajeVehiculo);
 }
